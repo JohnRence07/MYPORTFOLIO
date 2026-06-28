@@ -1,21 +1,37 @@
 {% extends 'main/base.html' %}
+{% load static %}
 
 {% block content %}
 
-<div class="text-center mt-5">
-    <h1 class="display-3">John Rence G. Ibarrientos</h1>
+<div class="text-center py-5">
 
-    <p class="lead">
+    <img src="{% static 'main/images/JRImage.jpg' %}"
+         alt="Profile Picture"
+         class="rounded-circle mb-4"
+         width="200">
+
+
+    <h1 class="display-3 fw-bold">
+        John Rence Gervacio Ibarrientos
+    </h1>
+
+    <h3 class="text-secondary">
+        Beginer Developer
+    </h3>
+
+    <p class="lead mt-4">
         Welcome to my first Django portfolio website.
     </p>
 
     <p>
-        This is my first project, and I am learning Django step by step.
+        I am currently learning Python, Django, Git, and Bootstrap.
+        This website documents my journey as I build real-world projects.
     </p>
 
-    <a href="/about/" class="btn btn-primary mt-3">
+    <a href="/about/" class="btn btn-primary btn-lg mt-3">
         Learn More About Me
     </a>
+
 </div>
 
 {% endblock %}
