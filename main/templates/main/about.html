@@ -4,16 +4,18 @@
 
 <h1>About Me</h1>
 
-<p><strong>Name:</strong> John Rence Gervacio Ibarrientos</p>
-
-<p><strong>Course:</strong> BS Architecture and Engineering</p>
-
-<p><strong>School:</strong> Holy Angel University</p>
-
-<p><strong>About Me:</strong></p>
-
-<p>
-This currently is my first django project, and I am learning django one step at a time. I am eager to improve my skills in the following sessions.
+<p><strong>Name:</strong> 
+    {{ personal.first_name }} 
+    {{ personal.middle_name }}
+    {{ personal.last_name }}
 </p>
+
+<p><strong>Summary:</strong>{{ personal.summary }}</p>
+
+<p><strong>Email:</strong> {{ personal.email }}</p>
+
+<p><strong>Contact:</strong> {{ personal.contact_number }}</p>
+
+<p><strong>Address:</strong> {{ personal.address }}</p>
 
 {% endblock %}
