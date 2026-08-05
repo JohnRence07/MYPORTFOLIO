@@ -21,6 +21,7 @@ This website includes the basics of using django projects, template inheritance,
 - Git
 - Github
 - Bootstrap v5
+- SQLite3
 
 # How to view the project
 ### 1. Clone the repository type: git clone <https://github.com/JohnRence07/MYPORTFOLIO.git>

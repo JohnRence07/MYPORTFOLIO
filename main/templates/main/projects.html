@@ -8,54 +8,24 @@
 
     <div class="row">
 
-        <!-- Current Project --> 
+        {% for project in projects %}
         <div class="col-md-6 mb-4">
             <div class="card shadow">
 
                 <div class="card-body">
 
                     <h3 class="card-title">
-                        Django Portfolio
+                        {{project.project_name}}
                     </h3>
-
-                    <p class="card-text">
-                        My first Django portfolio website built using Django, Bootstrap, Git, and GitHub.
-                    </p>
-
-                    <a href="/" class="btn btn-primary">
-                        View Home
-                    </a>
-
+                    <a href="/projects/{{project.id}}/"
+                          class="btn btn-primary ">
+                        View Project
+                    </a> 
                 </div>
-
             </div>
         </div>
-
-        <!-- Semester Project -->
-        <div class="col-md-6 mb-4">
-            <div class="card shadow">
-
-                <div class="card-body">
-
-                    <h3 class="card-title">
-                        Private viewing of personal medical history and records
-                    </h3>
-
-                    <p class="card-text">
-                        A program for Hospitals coming soon.
-                    </p>
-
-                    <a href="#" class="btn btn-secondary">
-                        Coming Soon
-                    </a>
-
-                </div>
-
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
-
 </div>
 
 {% endblock %}
