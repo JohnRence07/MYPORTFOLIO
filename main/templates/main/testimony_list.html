@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+<h1>Testimonies</h1>
+
+<hr>
+
+{% for testimony in testimonies %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5>{{testimony.full_name}}</h5>
+            <a href="{% url 'testimony_detail' testimony.id %}"
+            class="btn btn-primary"> View Testimony
+        </a>
+        </div>
+    </div>
+{% empty %}
+    <p>No testimonies available.</p>
+    {% endfor %}
+</div>
+{% endblock %}
