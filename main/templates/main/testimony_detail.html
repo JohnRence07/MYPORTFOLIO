@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>{{ testimony.full_name }}</h2>
+    <hr>
+    <p>{{ testimony.content }}</p>
+    
+    <a href="{% url 'testimony_list' %}" class="btn btn-secondary mt-3">Back to Testimonies</a>
+</div>
+{% endblock %}

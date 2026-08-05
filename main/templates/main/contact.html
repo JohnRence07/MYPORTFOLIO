@@ -20,4 +20,15 @@
 
 <p>Thank you for visiting my portfolio!</p>
 
+<hr>
+<h2>Send Inquiry</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success"> 
+        Send Inquiry
+    </button>
+</form>
+
 {% endblock %}
