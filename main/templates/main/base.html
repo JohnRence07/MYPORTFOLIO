@@ -26,33 +26,47 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
 
-           <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto">
 
-    <li class="nav-item">
-        <a class="nav-link" href="/">
-            <i class="bi bi-house-fill"></i> Home
-        </a>
-    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <i class="bi bi-house-fill"></i> Home
+                    </a>
+                </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="/about/">
-            <i class="bi bi-person-fill"></i> About
-        </a>
-    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">
+                        <i class="bi bi-person-fill"></i> About
+                    </a>
+                </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="/projects/">
-            <i class="bi bi-folder-fill"></i> Projects
-        </a>
-    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'projects' %}">
+                        <i class="bi bi-folder-fill"></i> Projects
+                    </a>
+                </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="/contact/">
-            <i class="bi bi-envelope-fill"></i> Contact
-        </a>
-    </li>
+                <!-- NEW: Testimonials link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'testimony_list' %}">
+                        <i class="bi bi-chat-quote-fill"></i> Testimonials
+                    </a>
+                </li>
 
-</ul>
+                <!-- NEW: Add Testimony link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_testimony' %}">
+                        <i class="bi bi-pencil-square"></i> Add Testimony
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">
+                        <i class="bi bi-envelope-fill"></i> Contact
+                    </a>
+                </li>
+
+            </ul>
 
         </div>
 
@@ -62,11 +76,12 @@
 <div class="container mt-5">
     {% block content %}
     {% endblock %}
+
     <footer class="bg-dark text-white text-center py-3 mt-5">
-    <p class="mb-0">
-        © 2026 John Rence Gervacio Ibarrientos | Built with Django & Bootstrap
-    </p>
-</footer>
+        <p class="mb-0">
+            © 2026 John Rence Gervacio Ibarrientos | Built with Django & Bootstrap
+        </p>
+    </footer>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
