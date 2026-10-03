@@ -1,38 +1,69 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Tech Stacks Dashboard</title>
-    </head>
-    <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Tech Stacks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark" style="background-color: #10b981;">
+    <div class="container">
+        <span class="navbar-brand mb-0 h1">JR Portfolio — Admin</span>
+        <a href="{% url 'admin_logout' %}" class="btn btn-outline-light btn-sm">Sign Out</a>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Tech Stacks</h1>
-        <a href="{% url 'dashboard' %}">Back to Dashboard</a><br><br>
-        <a href="{% url 'create_techstack' %}"><button type="button">Add New Tech Stack</button></a><br><br>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Tech Stack Name</th>
-                    <th>Project it was used</th>
-                    <th>Date Added</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for techstack in techstacks %}
-                <tr>
-                    <td>{{ techstack.name }}</td>
-                    <td>
-                        {% for project in techstack.project_set.all %}
-                            {{ project.project_name }}{% if not forloop.last %}, {% endif %}
-                        {% empty %}
-                            No projects associated
-                        {% endfor %}
-                    </td>
-                    <td>{{ techstack.created_at|date:"F d, Y" }}</td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="3">No tech stacks found.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-    </body>
+        <a href="{% url 'create_techstack' %}" class="btn btn-success">
+            <i class="bi bi-plus-lg"></i> Add New Tech Stack
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Tech Stack Name</th>
+                        <th>Projects It Was Used In</th>
+                        <th>Date Added</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for techstack in techstacks %}
+                    <tr>
+                        <td>{{ techstack.name }}</td>
+                        <td>
+                            {% for project in techstack.projects.all %}
+                                {{ project.project_name }}{% if not forloop.last %}, {% endif %}
+                            {% empty %}
+                                <span class="text-muted">—</span>
+                            {% endfor %}
+                        </td>
+                        <td>{{ techstack.created_at|date:"F d, Y" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" class="text-center text-muted py-4">No tech stacks yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary btn-sm">
+            ← Back to Dashboard
+        </a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
