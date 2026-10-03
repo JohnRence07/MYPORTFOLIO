@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*$py.class
+
+# Virtual Environment
+venv/
+.venv/
+
+# Django
+db.sqlite3
+
+# Environment variables
+.env
+
+# VS Code
+.vscode/
+
+# Python environment files
+.python-version
