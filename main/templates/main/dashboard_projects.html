@@ -1,46 +1,73 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-light">
 
-<html>
-    <head>
-        <title>Dashboard Projects</title>
-    </head>
-    <body>
-        <h1>Dashboard - Projects</h1>
-        <a href="{% url 'dashboard' %}">Back to Dashboard</a><br><br>
+<nav class="navbar navbar-dark" style="background-color: #10b981;">
+    <div class="container">
+        <span class="navbar-brand mb-0 h1">JR Portfolio — Admin</span>
+        <a href="{% url 'admin_logout' %}" class="btn btn-outline-light btn-sm">Sign Out</a>
+    </div>
+</nav>
 
-    <a href="{% url 'create_project' %}"><button type="button">Add New Project</button></a><br><br>
-    
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Project Name</th>
-                    <th>Description</th>
-                    <th>Tech Stack</th>
-                    <th>Link</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for project in projects %}
-                <tr>
-                    <td>{{ project.id }}</td>
-                    <td>{{ project.project_name }}</td>
-                    <td>{{ project.description|truncatechars:50 }}</td>
-                    <td>
-                        {% for tech in project.technology_stack.all %}
-                            {{ tech.name }}{% if not forloop.last %}, {% endif %}
-                        {% endfor %}
-                    </td>
-                    <td><a href="{{ project.link }}" target="_blank"> Visit Project</a></td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="4">No projects available.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Projects</h1>
+        <a href="{% url 'create_project' %}" class="btn btn-success">
+            <i class="bi bi-plus-lg"></i> Add New Project
+        </a>
+    </div>
 
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Description</th>
+                        <th>Tech Stack</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                    <tr>
+                        <td>{{ project.project_name }}</td>
+                        <td>{{ project.description|truncatechars:50 }}</td>
+                        <td>
+                            {% for tech in project.technology_stack.all %}
+                                {{ tech.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a href="{{ project.link }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                Visit Project
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center text-muted py-4">No projects yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    </body>
+    <div class="mt-4">
+        <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary btn-sm">
+            ← Back to Dashboard
+        </a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
