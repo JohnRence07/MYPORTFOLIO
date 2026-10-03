@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <h1>Dashboard for Admin</h1>
+        <p>Welcome, {{ request.user.username }}!</p>
+
+        <h2>Projects</h2>
+        <a href="{% url 'dashboard_projects' %}">View Projects</a>
+
+        <h2>Tech stacks</h2>
+        <a href="{% url 'dashboard_techstacks' %}">View Tech Stacks</a>
+
+        <br><br>
+        <a href="{% url 'sign_out' %}"><button type="button">Sign Out</button></a>
+    </body>
+</html>

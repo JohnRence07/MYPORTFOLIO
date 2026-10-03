@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Project</title>
+</head>
+<body>
+
+    <h1>Create Project</h1>
+
+    <a href="{% url 'dashboard_projects' %}">
+        Back to Projects
+    </a>
+
+    <br><br>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label for="id_project_name">Project Name:</label>
+        <br>
+        {{ form.project_name }}
+
+        {% if form.project_name.errors %}
+            <div>
+                {{ form.project_name.errors }}
+            </div>
+        {% endif %}
+
+        <br><br>
+
+        <label for="id_description">Project Description:</label>
+        <br>
+        {{ form.description }}
+
+        {% if form.description.errors %}
+            <div>
+                {{ form.description.errors }}
+            </div>
+        {% endif %}
+
+        <br><br>
+
+        <label>
+            Tech Stacks:
+        </label>
+
+        <br>
+
+        {{ form.technology_stack }}
+
+        {% if form.technology_stack.errors %}
+            <div>
+                {{ form.technology_stack.errors }}
+            </div>
+        {% endif %}
+
+        <br><br>
+
+        <label for="id_link">
+            Link:
+        </label>
+
+        <br>
+
+        {{ form.link }}
+
+        {% if form.link.errors %}
+            <div>
+                {{ form.link.errors }}
+            </div>
+        {% endif %}
+
+        <br><br>
+
+        <button type="submit">
+            Create Project
+        </button>
+
+    </form>
+
+</body>
+</html>

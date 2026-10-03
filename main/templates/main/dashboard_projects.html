@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Dashboard Projects</title>
+    </head>
+    <body>
+        <h1>Dashboard - Projects</h1>
+        <a href="{% url 'dashboard' %}">Back to Dashboard</a><br><br>
+
+    <a href="{% url 'create_project' %}"><button type="button">Add New Project</button></a><br><br>
+    
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Project Name</th>
+                    <th>Description</th>
+                    <th>Tech Stack</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in projects %}
+                <tr>
+                    <td>{{ project.id }}</td>
+                    <td>{{ project.project_name }}</td>
+                    <td>{{ project.description|truncatechars:50 }}</td>
+                    <td>
+                        {% for tech in project.technology_stack.all %}
+                            {{ tech.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td><a href="{{ project.link }}" target="_blank"> Visit Project</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No projects available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    </body>
+</html>

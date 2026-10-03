@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tech Stacks Dashboard</title>
+    </head>
+    <body>
+        <h1>Tech Stacks</h1>
+        <a href="{% url 'dashboard' %}">Back to Dashboard</a><br><br>
+        <a href="{% url 'create_techstack' %}"><button type="button">Add New Tech Stack</button></a><br><br>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Tech Stack Name</th>
+                    <th>Project it was used</th>
+                    <th>Date Added</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for techstack in techstacks %}
+                <tr>
+                    <td>{{ techstack.name }}</td>
+                    <td>
+                        {% for project in techstack.project_set.all %}
+                            {{ project.project_name }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}
+                            No projects associated
+                        {% endfor %}
+                    </td>
+                    <td>{{ techstack.created_at|date:"F d, Y" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No tech stacks found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </body>
+</html>

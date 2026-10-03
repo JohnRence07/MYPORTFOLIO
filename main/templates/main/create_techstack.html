@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create Tech Stack</title>
+    </head>
+    <body>
+        <h1>Create Tech Stack</h1>
+        <a href="{% url 'dashboard_techstacks' %}">Back to Tech Stacks</a><br><br>
+        <form method="post">
+            {% csrf_token %}
+            <label for="id_name">Tech Stack Name:</label>
+            {{ form.name }}
+            <br><br>
+            {% if form.name.errors %}
+                <div>
+                    {{ form.name.errors }}
+                </div>
+            {% endif %} <br><br>
+            <button type="submit">Create Tech Stack</button>
+    </body>
+</html>
