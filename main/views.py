@@ -83,7 +83,7 @@ def admin_login(request):
 def admin_logout(request):
     from django.contrib.auth import logout
     logout(request)
-    return redirect("sign_in")
+    return redirect("admin_login")
 
 def dashboard(request):
     if not request.user.is_authenticated or not request.user.is_superuser:
